@@ -1,6 +1,6 @@
 Hey !!! 
 
-have you installed the weather app>??
+have you installed the weather app ??
 if not , please go ahead and install it first before we proceed to the next part 
 
 pre requisites :
@@ -9,7 +9,7 @@ pre requisites :
 
 The process:
 1. clone locally all the files in this repo
-2. run the following command from the files location as you are connected to the target kubernetes cluster : "create configmap otel-collector-config --from-file=/your/path/config.yaml - change the path to your local path.
+2. run the following command from the files location as you are connected to the target kubernetes cluster : "create configmap otel-collector-config --from-file=/your/path/config.yaml" - change the path to your local path.
 3. then you can deploy the tracing collector using the commands :
 4. "kubectl apply -f deployment.yaml                                                                                                                                                                                                                   ─╯
 kubectl apply -f service.yaml
