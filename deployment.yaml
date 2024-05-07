@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-collector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otel-collector
+  template:
+    metadata:
+      labels:
+        app: otel-collector
+    spec:
+      containers:
+      - name: otel-collector
+        image: otel/opentelemetry-collector-contrib:latest
+        args: ["--config=/etc/otel/config.yaml"]
+        env:
+        - name: LOGZIO_ACCOUNT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: otel-collector-secrets
+              key: account_token
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/otel
+      volumes:
+      - name: config-volume
+        configMap:
+          name: otel-collector-config
